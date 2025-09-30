@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | FAQ accordion</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    .container {
+      font-size: 16px;
+      font-family: 'Work Sans';
+      width: 540px;
+      margin: 0px auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    #header1 {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .container > div:last-child {
+      margin-bottom: 40px;
+    }
+
+    .container > div {
+      position: relative;
+      margin-bottom: 20px;
+      margin-top: 20px;
+      margin: 20px 40px;
+    }
+
+    summary {
+      font-weight: 600;
+      list-style: none;
+    }
+
+    summary::after {
+      content: '';
+      position: absolute;
+      right: 0%;
+
+      /* 设置图标的尺寸 */
+      width: 20px;
+      height: 20px;
+
+      /* 默认显示 'plus' 图标 */
+      background-image: url('./assets/images/icon-plus.svg');
+      background-repeat: no-repeat;
+      background-size: contain; /* 确保图标完整显示 */
+      background-position: center;
+      transition: transform 1s; /* 可以保留旋转等动画效果 */
+    }
+
+    summary:hover {
+      cursor: pointer;
+      color: blueviolet;
+    }
+
+    /* 当 <details> 展开时，切换背景图片 */
+    details[open] > summary::after {
+      background-image: url('./assets/images/icon-minus.svg');
+    }
+
+    details[open] > p {
+      font-weight: 400;
+      font-size: 14px;
+      margin: 20px 0px;
+      color: hsl(292, 16%, 49%);
+    }
+    
+    </style>
+</head>
+<body>
+
+  <div style="background-image: url(./assets/images/background-pattern-desktop.svg); width: 100vw; height: 30vh;"></div>
+  <div style="background-color: hsl(275, 100%, 97%); width: 100vw; height: 70vh;"></div>
+
+  <div class="container">
+
+    <div id="header1">
+      <img src="./assets/images/icon-star.svg" style="width: 48px; height: 48px; vertical-align: middle;">
+      <div style="display: inline-block; font-size: 48px; font-weight: 700; font-family: 'Work Sans'; vertical-align: middle; padding-left: 20px;">
+        FAQs
+      </div>
+    </div>
+
+    <div>
+      <details class="details-accordion">
+        <summary>What is Frontend Mentor, and how will it help me?</summary>
+
+        <p>Frontend Mentor offers realistic coding challenges to help developers improve their 
+  frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for 
+  all levels and ideal for portfolio building.</p>
+      </details>
+    </div>
+
+    <div>
+      <details class="details-accordion">
+        <summary>Is Frontend Mentor free?</summary>
+
+        <p>Yes, Frontend Mentor offers both free and premium coding challenges, with the free 
+  option providing access to a range of projects suitable for all skill levels.</p>
+      </details>
+    </div>
+
+    <div>
+      <details class="details-accordion">
+        <summary>Can I use Frontend Mentor projects in my portfolio?</summary>
+
+        <p>Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
+  way to showcase your skills to potential employers!</p>
+      </details>
+    </div>
+
+    <div>
+      <details class="details-accordion">
+        <summary>How can I get help if I'm stuck on a challenge?</summary>
+
+        <p>The best place to get help is inside Frontend Mentor's Discord community. There's a help 
+  channel where you can ask questions and seek support from other community members.</p>
+      </details>
+    </div>
+
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>

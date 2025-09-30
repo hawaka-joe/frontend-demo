@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | Results summary component</title>
+
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    .main-container {
+      width: 100vw;
+      height: 100vh;
+      background-color: hsl(221, 100%, 96%);
+      font-family: "Hanken Grotesk", sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(45deg, hsla(252, 100%, 67%, 0.1), hsla(241, 81%, 54%, 0.1));
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .main-container::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, hsla(241, 81%, 54%, 0.1), hsla(252, 100%, 67%, 0.1));
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .card {
+      border-radius: 40px;
+      width: 740px;
+      height: 510px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      display: flex;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .card-left {
+      width: 50%;
+      background: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+      border-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .card-left > div {
+      width: 60%;
+      height: 25%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-left-title {
+      color: hsl(241, 100%, 89%);
+      font-weight: 500;
+      font-size: 20px;
+    }
+
+    .card-left-score {
+      background: linear-gradient(to bottom, hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      color: white;
+      font-weight: 700;
+      font-size: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-left-level {
+      color: white;
+      font-weight: 500;
+      font-size: 30px;
+    }
+
+    .card-left-summay {
+      color: hsl(241, 100%, 89%);
+      font-weight: 300;
+      font-size: 16px;
+    }
+
+    .card-right {
+      width: 50%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .card-right-title {
+      color: hsl(224, 30%, 27%);
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .category-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    .category-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .category-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .category-name {
+      font-size: 16px;
+    }
+
+    .category-score {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .score-number {
+      color: hsl(224, 30%, 27%);
+      font-weight: 700;
+    }
+
+    .score-total {
+      color: hsl(241, 100%, 89%);
+    }
+
+    .reaction {
+      background-color: hsla(0, 100%, 67%, 0.1);
+    }
+
+    .reaction .category-name {
+      color: hsl(0, 100%, 67%);
+    }
+
+    .memory {
+      background-color: hsla(39, 100%, 56%, 0.1);
+    }
+
+    .memory .category-name {
+      color: hsl(39, 100%, 56%);
+    }
+
+    .verbal {
+      background-color: hsla(166, 100%, 37%, 0.1);
+    }
+
+    .verbal .category-name {
+      color: hsl(166, 100%, 37%);
+    }
+
+    .visual {
+      background-color: hsla(234, 85%, 45%, 0.1);
+    }
+
+    .visual .category-name {
+      color: hsl(234, 85%, 45%);
+    }
+
+    .continue-btn {
+      background: linear-gradient(to bottom, hsl(224, 30%, 27%), hsl(224, 30%, 27%));
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .continue-btn:hover {
+      background: linear-gradient(to bottom, hsl(224, 30%, 20%), hsl(224, 30%, 20%));
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-container">
+    <div class="card">
+      <div class="card-left">
+        <div class="card-left-title">Your Result</div>
+        <div class="card-left-score">
+          <div style="font-size: 60px; font-weight: 800; line-height: 1;">76</div>
+          <div style="font-size: 16px; font-weight: 500; opacity: 0.7;">of 100</div>
+        </div>
+        <div class="card-left-level">Great</div>
+        <div class="card-left-summay">You scored higher than 65% of the people who have taken these tests.</div>
+      </div>
+      <div class="card-right">
+        <div class="card-right-title">Summary</div>
+        
+        <div class="category-row reaction">
+          <div class="category-left">
+            <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+            <span class="category-name">Reaction</span>
+          </div>
+          <div class="category-score">
+            <span class="score-number">80</span>
+            <span class="score-total">/ 100</span>
+          </div>
+        </div>
+
+        <div class="category-row memory">
+          <div class="category-left">
+            <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <span class="category-name">Memory</span>
+          </div>
+          <div class="category-score">
+            <span class="score-number">92</span>
+            <span class="score-total">/ 100</span>
+          </div>
+        </div>
+
+        <div class="category-row verbal">
+          <div class="category-left">
+            <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+            </svg>
+            <span class="category-name">Verbal</span>
+          </div>
+          <div class="category-score">
+            <span class="score-number">61</span>
+            <span class="score-total">/ 100</span>
+          </div>
+        </div>
+
+        <div class="category-row visual">
+          <div class="category-left">
+            <svg class="category-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+            <span class="category-name">Visual</span>
+          </div>
+          <div class="category-score">
+            <span class="score-number">73</span>
+            <span class="score-total">/ 100</span>
+          </div>
+        </div>
+
+        <button class="continue-btn">Continue</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
