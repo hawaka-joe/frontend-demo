@@ -13,8 +13,25 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
+    .attribution { 
+      font-size: 11px;
+      text-align: center;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
     .attribution a { color: hsl(228, 45%, 44%); }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+    }
 
     .main-container {
       width: 640px;
@@ -30,7 +47,7 @@
       height: 80px;
       width: 80px;
       border-radius: 40px;
-      margin: 0 auto;
+      margin: 10px auto;
     }
 
     p {
